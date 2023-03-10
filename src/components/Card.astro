@@ -1,63 +1,135 @@
 ---
 export interface Props {
-	title: string;
-	body: string;
-	href: string;
+  title: string;
+  body: string;
+}
+import axios from "axios";
+
+const { title, body } = Astro.props;
+// load IMGUR_CLIENT_ID from .env
+const { IMGUR_CLIENT_ID } = import.meta.env;
+// load the image from the IMGUR API https://api.imgur.com/3/gallery/search/top/all
+const imagesResponse = await axios.get(
+  `https://api.imgur.com/3/gallery/search/time/all?q="${body}"`,
+  {
+    headers: {
+      Authorization: `Client-ID ${IMGUR_CLIENT_ID}`,
+    },
+  }
+);
+let imageURL = "";
+if (imagesResponse.data.status == 200) {
+  console.log("success");
+  const image = imagesResponse.data.data;
+
+  if (image) {
+    // while (imageType !== "image/jpeg" && imageType !== "image/png") {
+    //   image.shift();
+    // }
+    //console.log(image, "AAAAAA");
+    //console.log(image[Math.round(Math.random() * image.length)]);
+    console.log(title);
+    const imageEntity = image[Math.round(Math.random() * image.length)];
+    if (imageEntity) {
+      if (imageEntity.images) {
+        console.log("Caso 1");
+        imageURL = imageEntity.images[0]?.link;
+        console.log(imageURL);
+      } else {
+        console.log("Caso 2");
+        imageURL = imageEntity.link;
+        console.log(imageURL);
+      }
+    } else {
+      const image2 = image[0];
+      if (image2.images) {
+        console.log("Caso 3");
+        imageURL = image2.images[0]?.link;
+        console.log(imageURL);
+      } else {
+        console.log("Caso 4");
+        imageURL = image2.link;
+        console.log(imageURL);
+      }
+    }
+    // if (image)
+    //   if (image[Math.round(Math.random() * image.length)]?.images) {
+    //     imageURL =
+    //       image[Math.round(Math.random() * image.length)]?.images[0]?.link;
+    //   } else {
+    //     imageURL = image[Math.round(Math.random() * image.length)]?.link;
+    //   }
+    console.log(imageURL);
+  }
+} else {
+  console.log("fail");
 }
 
-const { href, title, body } = Astro.props;
+//console.log(images);
+// get the first image from the respons
 ---
 
 <li class="link-card">
-	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-		<p>
-			{body}
-		</p>
-	</a>
+  <div>
+    <h2>
+      {title}
+    </h2>
+    <p>
+      {body}
+    </p>
+    {
+      imageURL &&
+        (imageURL.endsWith(".mp4") ? (
+          <video width="100" autoplay>
+            <source src={imageURL} type="video/mp4" width="150" />
+            Your browser does not support the video tag.
+          </video>
+        ) : (
+          <img src={imageURL} width="150" />
+        ))
+    }
+  </div>
 </li>
 <style>
-	.link-card {
-		list-style: none;
-		display: flex;
-		padding: 0.25rem;
-		background-color: white;
-		background-image: none;
-		background-size: 400%;
-		border-radius: 0.6rem;
-		background-position: 100%;
-		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-	}
+  .link-card {
+    list-style: none;
+    display: flex;
+    padding: 0.25rem;
+    background-color: white;
+    background-image: none;
+    background-size: 400%;
+    border-radius: 0.6rem;
+    background-position: 100%;
+    transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  }
 
-	.link-card > a {
-		width: 100%;
-		text-decoration: none;
-		line-height: 1.4;
-		padding: 1rem 1.3rem;
-		border-radius: 0.35rem;
-		color: #111;
-		background-color: white;
-		opacity: 0.8;
-	}
-	h2 {
-		margin: 0;
-		font-size: 1.25rem;
-		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-	}
-	p {
-		margin-top: 0.5rem;
-		margin-bottom: 0;
-		color: #444;
-	}
-	.link-card:is(:hover, :focus-within) {
-		background-position: 0;
-		background-image: var(--accent-gradient);
-	}
-	.link-card:is(:hover, :focus-within) h2 {
-		color: rgb(var(--accent));
-	}
+  .link-card > div {
+    width: 100%;
+    text-decoration: none;
+    line-height: 1.4;
+    padding: 1rem 1.3rem;
+    border-radius: 0.35rem;
+    color: #111;
+    background-color: white;
+    opacity: 0.8;
+  }
+  h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  p {
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    color: #444;
+  }
+  .link-card:is(:hover, :focus-within) {
+    background-position: 0;
+    background-image: var(--accent-gradient);
+  }
+  .link-card:is(:hover, :focus-within) h2 {
+    color: rgb(var(--accent));
+  }
 </style>
