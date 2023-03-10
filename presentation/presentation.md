@@ -58,7 +58,75 @@ git init
 ```
 O clonamos un repositorio remoto
 ```bash
-git clone
+git clone https://github.com/IvanRomero03/GitCourse.git
 ```
 
 ---
+
+# Conexion con GitHub
+- Creamos un repositorio en GitHub
+![width:700](images/create-new-repo.gif?text=B)
+
+---
+# Conexion con GitHub
+- Agregamos el repositorio remoto
+```bash
+git remote add origin https://github.com/IvanRomero03/NewRepo.git
+```
+
+---
+
+# Realizar cambios
+- Agregamos nuestros cambios al Stage
+```bash
+git add nuevoArchivo.txt README.md
+```
+o
+```bash
+git add .
+```
+
+---
+# Resultado
+![bg width:700 right:70%](images/status.jpg)
+
+---
+
+# Compartir los cambios
+
+- Commit
+```bash
+git commit -m "Agregar archivo de Texto y cambios al Readme 😋"
+```
+- Push
+```bash
+git push 
+```
+
+---
+
+# Branches
+- Branches son ramas de desarrollo
+- Se utilizan para desarrollar funcionalidades aisladas unas de otras y luego integrarlas en el proyecto principal.
+
+Agregar un nuevo branch
+```bash
+git branch nuevaBranch
+```
+Usar un branch
+```bash
+git checkout nuevaBranch
+```
+
+---
+
+# Pull Request
+
+- Los pull request son presentar los cambios realizados sobre una branch para que sean revisados por otros desarrolladores y así poder integrarlos al proyecto principal.
+- Nos permite realizar cambios y uniones de manera organizada y documentada.
+
+---
+
+# Practicando
+
+
