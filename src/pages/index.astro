@@ -10,7 +10,11 @@ import { data } from "../data.json";
     <p class="instructions">
       Práctica para el curso de Git. <br />
       Agrega dentro del archivo <code>src/data.json</code> un nuevo objeto con tu
-      nombre y tu animal favorito.
+      nombre y tu animal favorito de la siguiente manera:
+      <br />
+      <code>
+        {`{"nombre":"Tu nombre", "animal":"Tu animal favorito"}`}
+      </code>
     </p>
     <ul role="list" class="link-card-grid">
       {data.map((item) => <Card title={item.nombre} body={item.animal} />)}
