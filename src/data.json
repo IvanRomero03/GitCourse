@@ -9,6 +9,18 @@
       "animal": "Perro"
     },
     {
+      "nombre":"Jose Benvenuto",
+      "animal":"Aguila"
+    },
+    {
+      "nombre": "Ivansin",
+      "animal": "Gato"
+    },
+    {
+      "nombre": "Diego",
+      "animal": "Gato"
+    }, 
+    {
       "nombre": "Paco",
       "animal": "Camaleón"
     }
