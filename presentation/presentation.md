@@ -51,8 +51,8 @@ class:
 
 ---
 
-# Inizializar un repositorio
-Inizialisamos un repositorio local
+# Inicializar un repositorio
+Inicialisamos un repositorio local
 ```bash
 git init
 ```
