@@ -51,8 +51,16 @@ class:
 
 ---
 
+# Agregar nuestro usuario y correo
+```bash
+git config --global user.name "Ivan Romero"
+git config --global user.email "i.wells.ar@gmail.com"
+```
+
+---
+
 # Inicializar un repositorio
-Inicialisamos un repositorio local
+Inicializamos un repositorio local
 ```bash
 git init
 ```
@@ -108,7 +116,9 @@ git push
 # Branches
 - Branches son ramas de desarrollo
 - Se utilizan para desarrollar funcionalidades aisladas unas de otras y luego integrarlas en el proyecto principal.
-
+![width:500](images/branches.png)
+---
+# Branches
 Agregar un nuevo branch
 ```bash
 git branch nuevaBranch
@@ -127,6 +137,25 @@ git checkout nuevaBranch
 
 ---
 
-# Practicando
+# Practica
+
+- Abrimos: [https://git-course-roboweb.vercel.app/](https://git-course-roboweb.vercel.app/)
+
+- Clonamos: [https://github.com/RoBorregos/GitCourse.git](https://github.com/RoBorregos/GitCourse.git)
 
 
+- Creamos nueva branch
+```bash
+git checkout -b feature/ivan-romero
+```
+
+- Hacemos nuestros cambios
+
+- Creamos un pull request
+
+---
+
+# Otros comandos
+- git reset
+- git stash
+- git revert
