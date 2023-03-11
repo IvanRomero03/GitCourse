@@ -7,6 +7,10 @@
     {
       "nombre": "Juan",
       "animal": "Perro"
+    },
+    {
+      "nombre": "Emiliano",
+      "animal": "Monillos"
     }
   ]
 }
