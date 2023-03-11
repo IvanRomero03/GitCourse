@@ -7,14 +7,6 @@
     {
       "nombre": "Juan",
       "animal": "Perro"
-    },
-    {
-      "nombre": "David",
-      "animal": "Serpiente"
-    },
-    {
-      "nombre": "Ivan 2",
-      "animal": "Gato"
     }
   ]
 }
