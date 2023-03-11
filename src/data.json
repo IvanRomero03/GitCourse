@@ -15,6 +15,30 @@
     {
       "nombre": "Leo2",
       "animal": "Leon"
+    },
+    {
+      "nombre": "Emiliano",
+      "animal": "Monillos"
+    },
+    {
+      "nombre": "Ale Coeto",
+      "animal": "Tortuga"
+    },
+    {
+      "nombre":"Jose Benvenuto",
+      "animal":"Aguila"
+    },
+    {
+      "nombre": "Ivansin",
+      "animal": "Gato"
+    },
+    {
+      "nombre": "Diego",
+      "animal": "Gato"
+    }, 
+    {
+      "nombre": "Paco",
+      "animal": "Camaleon"
     }
   ]
 }
