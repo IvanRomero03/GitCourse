@@ -11,6 +11,10 @@
     {
       "nombre": "Ivansin",
       "animal": "Gato"
+    },
+    {
+      "nombre": "Diego",
+      "animal": "Gato"
     }
   ]
 }
