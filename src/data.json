@@ -41,8 +41,13 @@
       "animal": "Camaleon"
     },
     {
+      "nombre": "Ari",
+      "animal": "leon"
+    },
+    {
       "nombre": "Ivan2",
       "animal": "Gato"
     }
   ]
 }
+ 
