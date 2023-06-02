@@ -25,8 +25,8 @@
       "animal": "Tortuga"
     },
     {
-      "nombre":"Jose Benvenuto",
-      "animal":"Aguila"
+      "nombre": "Jose Benvenuto",
+      "animal": "Aguila"
     },
     {
       "nombre": "Ivansin",
@@ -35,10 +35,14 @@
     {
       "nombre": "Diego",
       "animal": "Gato"
-    }, 
+    },
     {
       "nombre": "Paco",
       "animal": "Camaleon"
+    },
+    {
+      "nombre": "Ivan2",
+      "animal": "Gato"
     }
   ]
 }
