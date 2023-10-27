@@ -55,6 +55,10 @@
     {
       "nombre": "Ivan3",
       "animal": "Cat"
+    },
+    {
+      "nombre": "gilberto",
+      "animal": "Fox"
     }
   ]
 }
