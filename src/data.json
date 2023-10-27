@@ -49,8 +49,31 @@
       "animal": "Cat"
     },
     {
+
       "nombre": "Jocelyn..",
-      "animal": "Otter"
+      "animal": "Bee"
+    },
+    {
+      "nombre": "Diego Martinez Sanciprian",
+      "animal": "nutria"
+    },
+    {
+      "nombre": "José Domínguez",
+      "animal": "Wolf"
+    },
+    {
+      "nombre": "Gerardo",
+      "animal": "Dog"
+    },
+    {
+      "nombre": "Ivan3",
+      "animal": "Cat"
+    },
+    {
+      "nombre": "gilberto",
+      "animal": "Fox"
+
     }
+
   ]
 }
