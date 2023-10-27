@@ -47,6 +47,11 @@
     {
       "nombre": "Ivan2",
       "animal": "Cat"
+    },
+    {
+      "nombre": "José Domínguez",
+      "animal": "Wolf"
     }
+
   ]
 }
