@@ -8,7 +8,7 @@ import axios from "axios";
 const { title, body } = Astro.props;
 // load IMGUR_CLIENT_ID from .env
 // const { IMGUR_CLIENT_ID } = import.meta.env;
-const { PEXEL_TOKEN } = import.meta.env;
+const { PEXELS_TOKEN } = import.meta.env;
 // load the image from the IMGUR API https://api.imgur.com/3/gallery/search/top/all
 // const imagesResponse = await axios.get(
 //   `https://api.imgur.com/3/gallery/search/time/all?q="${body}"`,
@@ -22,17 +22,29 @@ const imageResponse = await axios.get(
   `https://api.pexels.com/v1/search?query=${body}`,
   {
     headers: {
-      Authorization: `${PEXEL_TOKEN}`,
+      Authorization: `${PEXELS_TOKEN}}`,
     },
   }
 );
 let imageURL = "";
-if(imageResponse.data.photos.length > 0){
-  const randIndex = Math.round(Math.random() * imageResponse.data.photos.length);
-  imageURL = imageResponse.data.photos[randIndex].src.original;
+try {
+  if(imageResponse.data?.photos?.length > 0){
+  console.log("image len",imageResponse.data?.photos?.length) 
+  const randIndex = Math.min(Math.round(Math.random() * imageResponse.data.photos.length), imageResponse.data.photos.length - 1);
+  console.log("randIndex", randIndex);
+  const image = imageResponse.data.photos[randIndex];
+  if(image?.src?.original) {
+    imageURL = imageResponse.data.photos[randIndex].src.original;
+  } else {
+    console.log("No images found");
+  }
 } else {
   console.log("No images found");
 }
+} catch (e) {
+  console.log("Error", e);
+}
+
 // if (imagesResponse.data.status == 200) {
 //   console.log("success");
 //   const image = imagesResponse.data.data;
