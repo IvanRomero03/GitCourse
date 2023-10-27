@@ -7,63 +7,90 @@ import axios from "axios";
 
 const { title, body } = Astro.props;
 // load IMGUR_CLIENT_ID from .env
-const { IMGUR_CLIENT_ID } = import.meta.env;
+// const { IMGUR_CLIENT_ID } = import.meta.env;
+const { PEXELS_TOKEN } = import.meta.env;
 // load the image from the IMGUR API https://api.imgur.com/3/gallery/search/top/all
-const imagesResponse = await axios.get(
-  `https://api.imgur.com/3/gallery/search/time/all?q="${body}"`,
+// const imagesResponse = await axios.get(
+//   `https://api.imgur.com/3/gallery/search/time/all?q="${body}"`,
+//   {
+//     headers: {
+//       Authorization: `Client-ID ${IMGUR_CLIENT_ID}`,
+//     },
+//   }
+// );
+const imageResponse = await axios.get(
+  `https://api.pexels.com/v1/search?query=${body}`,
   {
     headers: {
-      Authorization: `Client-ID ${IMGUR_CLIENT_ID}`,
+      Authorization: `${PEXELS_TOKEN}`,
     },
   }
 );
 let imageURL = "";
-if (imagesResponse.data.status == 200) {
-  console.log("success");
-  const image = imagesResponse.data.data;
-
-  if (image) {
-    // while (imageType !== "image/jpeg" && imageType !== "image/png") {
-    //   image.shift();
-    // }
-    //console.log(image, "AAAAAA");
-    //console.log(image[Math.round(Math.random() * image.length)]);
-    console.log(title);
-    const imageEntity = image[Math.round(Math.random() * image.length)];
-    if (imageEntity) {
-      if (imageEntity.images) {
-        console.log("Caso 1");
-        imageURL = imageEntity.images[0]?.link;
-        console.log(imageURL);
-      } else {
-        console.log("Caso 2");
-        imageURL = imageEntity.link;
-        console.log(imageURL);
-      }
-    } else {
-      const image2 = image[0];
-      if (image2.images) {
-        console.log("Caso 3");
-        imageURL = image2.images[0]?.link;
-        console.log(imageURL);
-      } else {
-        console.log("Caso 4");
-        imageURL = image2.link;
-        console.log(imageURL);
-      }
-    }
-    // if (image)
-    //   if (image[Math.round(Math.random() * image.length)]?.images) {
-    //     imageURL =
-    //       image[Math.round(Math.random() * image.length)]?.images[0]?.link;
-    //   } else {
-    //     imageURL = image[Math.round(Math.random() * image.length)]?.link;
-    //   }
-    console.log(imageURL);
+try {
+  if(imageResponse.data?.photos?.length > 0){
+  console.log("image len",imageResponse.data?.photos?.length) 
+  const randIndex = Math.min(Math.round(Math.random() * imageResponse.data.photos.length), imageResponse.data.photos.length - 1);
+  console.log("randIndex", randIndex);
+  const image = imageResponse.data.photos[randIndex];
+  if(image?.src?.original) {
+    imageURL = imageResponse.data.photos[randIndex].src.original;
+  } else {
+    console.log("No images found");
   }
 } else {
-  console.log("fail");
+  console.log("No images found");
 }
+} catch (e) {
+  console.log("Error", e);
+}
+
+// if (imagesResponse.data.status == 200) {
+//   console.log("success");
+//   const image = imagesResponse.data.data;
+
+//   if (image) {
+//     // while (imageType !== "image/jpeg" && imageType !== "image/png") {
+//     //   image.shift();
+//     // }
+//     //console.log(image, "AAAAAA");
+//     //console.log(image[Math.round(Math.random() * image.length)]);
+//     console.log(title);
+//     const imageEntity = image[Math.round(Math.random() * image.length)];
+//     if (imageEntity) {
+//       if (imageEntity.images) {
+//         console.log("Caso 1");
+//         imageURL = imageEntity.images[0]?.link;
+//         console.log(imageURL);
+//       } else {
+//         console.log("Caso 2");
+//         imageURL = imageEntity.link;
+//         console.log(imageURL);
+//       }
+//     } else {
+//       const image2 = image[0];
+//       if (image2.images) {
+//         console.log("Caso 3");
+//         imageURL = image2.images[0]?.link;
+//         console.log(imageURL);
+//       } else {
+//         console.log("Caso 4");
+//         imageURL = image2.link;
+//         console.log(imageURL);
+//       }
+//     }
+//     // if (image)
+//     //   if (image[Math.round(Math.random() * image.length)]?.images) {
+//     //     imageURL =
+//     //       image[Math.round(Math.random() * image.length)]?.images[0]?.link;
+//     //   } else {
+//     //     imageURL = image[Math.round(Math.random() * image.length)]?.link;
+//     //   }
+//     console.log(imageURL);
+//   }
+// } else {
+//   console.log("fail");
+// }
 
 //console.log(images);
 // get the first image from the respons
