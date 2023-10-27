@@ -2,11 +2,55 @@
   "data": [
     {
       "nombre": "Ivan Romero",
-      "animal": "Pinguino"
+      "animal": "Penguin"
     },
     {
       "nombre": "Juan",
-      "animal": "Perro"
+      "animal": "Dog"
+    },
+    {
+      "nombre": "Leo",
+      "animal": "Gorila"
+    },
+    {
+      "nombre": "Leo2",
+      "animal": "Lion"
+    },
+    {
+      "nombre": "Emiliano",
+      "animal": "Monkey"
+    },
+    {
+      "nombre": "Ale Coeto",
+      "animal": "Turtle"
+    },
+    {
+      "nombre": "Jose Benvenuto",
+      "animal": "Eagle"
+    },
+    {
+      "nombre": "Ivansin",
+      "animal": "Cat"
+    },
+    {
+      "nombre": "Diego",
+      "animal": "Cat"
+    },
+    {
+      "nombre": "Paco",
+      "animal": "Chameleon"
+    },
+    {
+      "nombre": "Ari",
+      "animal": "Lion"
+    },
+    {
+      "nombre": "Ivan2",
+      "animal": "Cat"
+    },
+    {
+      "nombre": "Jocelyn.",
+      "animal": "Otter"
     }
   ]
 }
