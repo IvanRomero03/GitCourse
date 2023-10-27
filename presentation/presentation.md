@@ -139,7 +139,7 @@ git checkout nuevaBranch
 
 # Practica
 
-- Abrimos: [https://git-course-roboweb.vercel.app/](https://git-course-roboweb.vercel.app/)
+- Abrimos: [https://git.roborregos.com/](https://git.roborregos.com/)
 
 - Clonamos: [https://github.com/RoBorregos/GitCourse.git](https://github.com/RoBorregos/GitCourse.git)
 
